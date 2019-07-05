@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+          .effects {
+              background-color: yellow;
+          }
+        </style>
+        <script>
+            function bodyload(){
+                document.getElementById("pic").src="../Images/tv.jpg";
+                document.getElementById("btnSubmit").value="Submit";
+
+                var x = document.getElementsByName("pay");
+                alert("Payment Modes =" + x.length);
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <fieldset>
+            <legend>Payments</legend>
+            <input type="radio" name="pay">Credit Card
+            <input type="radio" name="pay">UPI Payment
+        </fieldset>
+        <br>
+        <div class="effects">
+            <img id="pic" name="pic" width="100" height="100" border="1">
+        </div>
+        <div></div>
+        <div>
+            <form name="frmHome">
+                User Name:
+                <input id="txtName" name="txtName" type="text">
+                <input class="effects" id="btnSubmit" name="btnSubmit" type="button"> 
+            </form>
+        </div>
+    </body>
+</html>

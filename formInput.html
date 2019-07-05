@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+            <style>
+              #cardDetails {
+                  width:300px;
+                  margin: auto;
+              }
+            </style>
+            <script>
+                function AddProduct() {
+                    document.getElementById("cardDetails").style.display = "Block";
+                    document.getElementById("cardAdd").style.display = "none";
+
+                    document.getElementById("lblId").innerHTML = 
+                    document.getElementById("txtId").value;
+                    
+                    document.getElementById("lblName").innerHTML = 
+                    document.getElementById("txtName").value;
+
+                    document.getElementById("lblMfd").innerHTML = 
+                    document.getElementById("txtMfd").value;
+
+                    var optYes = document.getElementById("optYes");
+                    var optNo = document.getElementById("optNo");
+
+                    var stock="";
+                    
+                    if(optYes.checked) {
+                        stock = optYes.value;
+                    }
+
+                    if(optNo.checked) {
+                        stock = optNo.value;
+                    }
+
+                    document.getElementById("lblStock").innerHTML = stock;
+                    document.getElementById("lblShipped").innerHTML = 
+                    document.getElementById("lstCities").value;
+                }
+                function CloseDetails() {
+                    document.getElementById("cardDetails").style.display = "none";
+                    document.getElementById("cardAdd").style.display = "block";
+                }
+            </script>
+    </head>
+    <body>
+        <div class="container">
+            <fieldset id="cardAdd">
+                <legend>Add Product</legend>
+                <div class="form-group">
+                    <label>Product Id</label>
+                    <div>
+                        <input class="form-control" type="number" id="txtId">
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label>Name</label>
+                        <div>
+                            <input class="form-control" type="text" id="txtName">
+                        </div>
+                </div>
+                <div class="form-group">
+                        <label>Manufactured</label>
+                        <div>
+                            <input class="form-control" type="date" id="txtMfd">
+                        </div>
+                </div>
+                <div class="form-group">
+                        <label>Is In Stock</label>
+                        <div>
+                            <input type="radio" name="stock" id="optYes" value="Available"> Yes 
+                            <input type="radio" name="stock" id="optNo" value="Out of Stock"> No 
+                        </div>
+                </div>
+                <div class="form-group">
+                        <label>Shipped To</label>
+                        <div>
+                          <select class="form-control" id="lstCities">
+                              <option>Delhi</option>
+                              <option>Hyd</option>
+                          </select>
+                        </div>
+                </div>
+                <div class="form-group">
+                  <button onclick="AddProduct()" class="btn btn-primary">Add Product</button>
+                </div>         
+            </fieldset>
+            <br>
+            <div style="display: none" id="cardDetails" class="row">
+                <div class="card-deck bg-warning">
+                    <div class="card">
+                        <div class="card-title" id="lblName"></div>
+                        <div class="card-body">
+                            <dl>
+                                <dt>Product Id</dt>
+                                <dd id="lblId"></dd>
+                                <dt>Manufactured</dt>
+                                <dd id="lblMfd"></dd>
+                                <dt>Shipped To</dt>
+                                <dd id="lblShipped"></dd>
+                            </dl>
+                        </div>
+                        <div id="lblStock" class="card-footer">
+
+                        </div>
+                        <div class="text-center">
+                            <button onclick="CloseDetails()" class="btn btn-primary">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

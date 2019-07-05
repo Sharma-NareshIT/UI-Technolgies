@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+         function Add(){
+             var folder = prompt("Enter Name");
+             if(folder==null) {
+                 document.write("You Canceled");
+             } else if(folder=="") {
+                 document.write("Folder Name Can't be Empty")
+             } else {
+                document.getElementById("msg").innerHTML += 
+                "Folder Created : " + folder + "<br>";
+             }
+         }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Add Folder</h2>
+            <button onclick="Add()" class="btn btn-primary">New Folder</button>
+            <br>
+            <div id="msg" class="text-center">
+            </div>
+        </div>
+    </body>
+
+</html>

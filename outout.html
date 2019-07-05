@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+            function Delete() {
+               var x = confirm("Are you sure want to delete?");
+                if(x==true) {
+                    document.getElementById("msg").style.display = "block";
+                    document.getElementById("msg").innerHTML = "<marquee>Record Deleted</marquee> <br> <input class='btn btn-primary' type='button' value='OK' onclick='OkClick()'>";
+                }
+                else {
+                    alert("Record Restored");
+                }
+            }
+            function OkClick(){
+                document.getElementById("msg").style.display ="none";
+            }
+        </script>
+        <style>
+         #msg {
+             width:200px;
+             height: 100px;
+             display:none;
+             color: red;
+             font-weight: bold;
+             font-size: larger;
+             margin: auto;
+             border: 2px red solid;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Delete Record</h2>
+                <input onclick="Delete()" class="btn btn-danger" type="button" value="Delete">
+                <br>
+                <div id="msg" class="text-center">
+                    
+                </div>
+        </div>
+    </body>
+</html>
