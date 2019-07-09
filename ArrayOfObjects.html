@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+          var products = [
+              {Name: "Samsung TV", Price: 35000.66, Photo:"../Images/tv.jpg"},
+              {Name: "Nike Casuals", Price: 6000.22, Photo:"../Images/shoe.jpg"},
+              {Name: "LG Mobile", Price: 12000.55, Photo:"../Images/mobile.jpg"},
+              {Name: "Lee Cooper Boot", Price: 3000.45, Photo:"../Images/shoe1.jpg"},
+          ];
+          function GetProduct(index) {
+            document.getElementById("lblName").innerHTML = 
+            products[index].Name;
+
+            document.getElementById("imgPic").src= 
+            products[index].Photo;
+
+            document.getElementById("lblDetails").innerHTML = 
+            "&#8377;" + products[index].Price;
+
+          }
+          function bodyload() {
+              GetProduct(0);
+          }
+          var i = 0;
+          function NextClick() {
+            i++;
+            GetProduct(i);
+          }
+          function PreviousClick() {
+            i--;
+            GetProduct(i);
+          }
+        </script>
+    </head>
+    <body onload="bodyload()" class="text-center">
+        <div class="container">
+        <h2>Amazon Shopping Cart</h2>
+        <div class="text-center">
+            <div class="card">
+                <div style="color:white" class="card-header bg-primary">
+                    <h2 id="lblName" class="card-title">
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-primary btn-lg" onclick="PreviousClick()"> < </button>
+                    <img src="" id="imgPic" class="img-thumbnail" height="300" width="300">
+                    <button class="btn btn-primary btn-lg" onclick="NextClick()"> > </button>
+                </div>
+                <div style="color:white" class="card-footer bg-secondary">
+                    <h3 id="lblDetails">
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
