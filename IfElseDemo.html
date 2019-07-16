@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+         #popup {
+             width:300px;
+             height: 200px;
+             margin: auto;
+             position:fixed;
+             top:100px;
+             left:200px;
+             display:none;
+         }
+        </style>
+        <script>
+          var data = {
+              userName: 'john_ui',
+              password: 'john123'
+          };
+          function VerifyDetails() {
+            var uname = document.getElementById("txtName").value;
+            var pwd  = document.getElementById("txtPwd").value;
+            var popup = document.getElementById("popup");
+
+            if(uname==data.userName && pwd==data.password) {
+                location.href="../home.html";
+            } else {
+                popup.style.display = "block";
+            }
+
+          }
+          function OkClick() {
+              document.getElementById("popup").style.display = "none";
+          }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>User Login</h2>
+            <div class="form-group">
+                <label>User Name</label>
+                <div>
+                    <input class="form-control" type="text" id="txtName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div>
+                    <input class="form-control" type="password" id="txtPwd">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" onclick="VerifyDetails()">Login</button>
+            </div>
+            <div class="card" id="popup">
+                <div class="card-body">
+                        <h3 class="text-danger">Invalid User Name / Password</h3>
+                </div>
+                <div class="card-footer">
+                        <button class="btn btn-danger" onclick="OkClick()">OK</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
