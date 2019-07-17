@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+            #popup {
+                display: none;
+            }
+        </style>
+        <script>
+          var regExp;
+          var countryName;
+          var flag;
+          var msg;
+          function CountryChanged(){ 
+             var txtMobile = document.getElementById("txtMobile");
+             var lstCountries = document.getElementById("lstCountries").value;
+             
+             switch(lstCountries) {
+                 case "US":
+                 txtMobile.placeholder = "eg: +001 [8] digits";
+                 regExp = /\+001[0-9]{8}/;
+                 countryName = lstCountries;
+                 flag = "../Images/us.png";
+                 msg = "Please use +001 for US ";
+                 break;
+                 case "UK":
+                 txtMobile.placeholder = "eg: +44 [6] digits";
+                 regExp = /\+44[0-9]{6}/;
+                 countryName = lstCountries;
+                 flag = "../Images/uk.png";
+                 msg = "Please use +44 for UK ";
+                 break;
+                 case "India":
+                 txtMobile.placeholder = "eg: +91 [10] digits";
+                 regExp = /\+91[0-9]{10}/;
+                 countryName = lstCountries;
+                 flag = "../Images/india.png";
+                 msg = "Please use +91 for India ";
+                 break;
+                 default: 
+                 txtMobile.placeholder = "Please Select a Country";
+             }
+          }
+          function VerifyClick() {
+              document.getElementById("lblName").innerHTML = countryName;
+              document.getElementById("lblMsg").innerHTML = msg ;
+              document.getElementById("imgFlag").src = flag;
+
+              var txtMobile = document.getElementById("txtMobile").value;
+              if(txtMobile.match(regExp)) {
+                  document.write("Verified Successfully");
+              } else {
+                  document.getElementById("popup").style.display ="block";
+              }
+          }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <fieldset>
+                <legend>Verify Mobile Number</legend>
+                <div class="form-group">
+                    <label>Your Country</label>
+                    <div>
+                        <select onchange="CountryChanged()" id="lstCountries" class="form-control">
+                            <option>Select a Country</option>
+                            <option>US</option>
+                            <option>UK</option>
+                            <option>India</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Mobile Number</label>
+                    <div>
+                        <input id="txtMobile" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button onclick="VerifyClick()" class="btn btn-success">Verify</button>
+                </div>
+            </fieldset>
+            <div class="card" id="popup">
+                <div class="card-header">
+                    <h3 id="lblName"></h3>
+                </div>
+                <div class="card-body">
+                    <span id="lblMsg"></span>
+                </div>
+                <div class="card-footer">
+                    <img id="imgFlag">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
