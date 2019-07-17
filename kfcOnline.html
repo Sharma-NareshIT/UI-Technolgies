@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+          #rowStyle {
+              background-color: maroon;
+              color:white;
+              text-align: center;
+          }
+          #popup {
+              width:300px;
+              height:300px;
+              margin: auto;
+              display: none;
+          }
+        </style>
+        <script>
+         function Summary() {
+             document.getElementById("details").style.display = "none";
+             document.getElementById("popup").style.display = "block";
+
+             var uname = document.getElementById("txtName").value;
+             var optBurger = document.getElementById("optBurger");
+             var optRoller = document.getElementById("optRoller");
+             var optWings = document.getElementById("optWings");
+             var optKrusher = document.getElementById("optKrusher");
+
+             var mname = "";
+             var mcost = 0;
+             var aname = "";
+             var acost = 0;
+             var total = 0;
+
+             if(optBurger.checked){
+                 mcost = 140;
+                 mname = optBurger.value;
+             }
+             if(optRoller.checked) {
+                 mcost = 100;
+                 mname = optRoller.value;
+             }
+
+             if(optWings.checked) {
+                 acost = 80;
+                 aname += optWings.value + "<br>";
+                 mcost = mcost + acost;
+             }
+             if(optKrusher.checked) {
+                 acost = 40;
+                 aname += optKrusher.value + "<br>";
+                 mcost = mcost + acost;
+             }
+             total = mcost;
+             document.getElementById("lblName").innerHTML = uname;
+             document.getElementById("lblMeal").innerHTML = mname;
+             document.getElementById("lblAdon").innerHTML = aname;
+             document.getElementById("lblTotal").innerHTML = "&#8377;" + total + "/-";
+         }
+         function OkClick() {
+             document.getElementById("details").style.display = "block";
+             document.getElementById("popup").style.display = "none";
+         }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <table id="details" cellspacing="4" cellpadding="4" width="800" align="center">
+                <tr>
+                    <td colspan="2">
+                        <img src="../Images/kfctop.PNG">
+                    </td>
+                </tr>
+                <tr id="rowStyle">
+                    <td>User Name </td>
+                    <td><input type="text" id="txtName" class="form-control"></td>
+                </tr>
+                <tr id="rowStyle">
+                    <td colspan="2"> Select a Meal </td>
+                </tr>
+                <tr id="rowStyle">
+                    <td>
+                        <img src="../Images/omg1.PNG">
+                        <br>
+                        <input type="radio" value="OMG Burger" name="meal" id="optBurger"> OMG Burger [&#8377; 140/-]
+                    </td>
+                    <td>
+                        <img src="../Images/omg2.PNG">
+                        <br>
+                        <input type="radio" value="OMG Roller" name="meal" id="optRoller"> OMG Roller [&#8377; 100/-]
+                    </td>
+                </tr>
+                <tr id="rowStyle">
+                    <td colspan="2">Select Ad-ON's </td>
+                </tr>
+                <tr id="rowStyle">
+                    <td>
+                        <img src="../Images/wings.PNG">
+                        <br>
+                        <input type="checkbox" value="Hot Wings" id="optWings"> Hot Wings [&#8377; 80/-]
+                    </td>
+                    <td>
+                        <img src="../Images/krusher1.PNG">
+                        <br>
+                        <input type="checkbox" value="Krusher Brownie" id="optKrusher"> Krusher Brownie [&#8377; 40/-]
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button onclick="Summary()" class="btn btn-danger">Place Order</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="popup" class="card">
+            <div class="card-header">
+                <h3 id="lblName"></h3>
+            </div>
+            <div class="card-body">
+                <dl>
+                    <dt>Meal Name</dt>
+                    <dd id="lblMeal"></dd>
+                    <dt>Ad ON's</dt>
+                    <dd id="lblAdon"></dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <h3 id="lblTotal"></h3>
+                <button onclick="OkClick()" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </body>
+</html>
