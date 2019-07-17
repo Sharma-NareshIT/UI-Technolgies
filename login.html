@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+          #popup {
+              border: 2px red solid;
+              height: 200px;
+              width: 200px;
+              display:none;
+              position: fixed;
+              top:100px;
+              left:300px;
+          }
+        </style>
+        <script>
+         function LoginClick() {
+             var userDetails = {
+                 UserName : 'john_ui',
+                 Password : 'john123'
+             };
+             var txtName = document.getElementById("txtName").value;
+             var txtPwd = document.getElementById("txtPwd").value;
+
+             if(txtName==userDetails.UserName && txtPwd==userDetails.Password) {
+                 document.write("Login Success..");
+             } else {
+                 document.getElementById("popup").style.display="block";
+             }
+
+         }
+         function OkClick() {
+            document.getElementById("popup").style.display="none";
+         }
+        </script>
+    </head>
+    <body>
+        <div id="login" class="container">
+            <h2>User Login</h2>
+            <div class="form-group">
+                <label>User Name</label>
+                <div>
+                <input type="text" id="txtName" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                    <label>Password</label>
+                    <div>
+                    <input type="password" id="txtPwd" class="form-control">
+                    </div>
+            </div>
+            <div class="form-group">
+                <button onclick="LoginClick()" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+        <div id="popup">
+            <h4 class="text-danger">Invalid User Name / Password</h4>
+            <button class="btn btn-danger" onclick="OkClick()">OK</button>
+        </div>
+    </body>
+</html>
