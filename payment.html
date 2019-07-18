@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+         #txtCvv {
+             width:100px;
+         }
+         #popup {
+             width:300px;
+             height: 100px;
+             position:fixed;
+             left:300px;
+             top:100px;
+             border: 2px red solid;
+             display: none;
+         }
+        </style>
+        <script>
+          var userDetails = {
+              CardNo: "5555666677778888",
+              Year: 2021,
+              Cvv: "4050"
+          };
+          function bodyload(){
+              document.getElementById("btnPay").disabled=true;
+              document.getElementById("txtCvv").disabled=true;
+              document.getElementById("lstYear").disabled=true;
+          }
+          function VerifyCard() {
+              var txtCard = document.getElementById("txtCard").value;
+              if(txtCard==userDetails.CardNo) {
+                  document.getElementById("lstYear").disabled=false;
+              } else {
+                document.getElementById("lstYear").disabled=true;
+              }
+          }
+          function VerifyYear() {
+              var lstYear = document.getElementById("lstYear").value;
+              if(lstYear==userDetails.Year) {
+                  document.getElementById("txtCvv").disabled=false;
+              } else {
+                document.getElementById("txtCvv").disabled=true;
+              }
+          }
+          function VerifyCvv() {
+              var btnPay = document.getElementById("btnPay");
+              var txtCvv = document.getElementById("txtCvv").value;
+              if(txtCvv==userDetails.Cvv) {
+                  btnPay.disabled=false;
+              } 
+          }
+          function PayClick() {
+              var txtCard = document.getElementById("txtCard").value;
+              var txtCvv = document.getElementById("txtCvv").value;
+              var lstYear = document.getElementById("lstYear").value;
+              var popup = document.getElementById("popup");
+              var msg = document.getElementById("msg");
+
+              if(txtCard==userDetails.CardNo) {
+                 if(lstYear==userDetails.Year) {
+                    if(txtCvv==userDetails.Cvv) {
+                        document.write("Success..");
+                    } else {
+                        msg.innerHTML="Invalid CVV";
+                        popup.style.display="block";
+                    }
+                 } else {
+                     msg.innerHTML="Invalid Expiry Year";
+                     popup.style.display="block";
+                 }
+              } else {
+                  msg.innerHTML = "Invalid Card No";
+                  popup.style.display = "block";
+              }
+          }
+          function OkClick(){
+              document.getElementById("popup").style.display="none";
+          }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <div class="container">
+            <fieldset>
+                    <legend>Payment Details</legend>
+                    <dl>
+                        <dt>Card Number</dt>
+                        <dd>
+                            <input onkeyup="VerifyCard()" maxlength="16" id="txtCard" type="text" class="form-control">
+                        </dd>
+                        <dt>Expiry Year</dt>
+                        <dd>
+                            <select onchange="VerifyYear()" id="lstYear" class="form-control">
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </select>
+                        </dd>
+                        <dt>CVV</dt>
+                        <dd>
+                            <input onkeyup="VerifyCvv()" maxlength="4" id="txtCvv" type="text" class="form-control">
+                        </dd>
+                    </dl>
+                    <br>
+                    <button onclick="PayClick()" id="btnPay" class="btn btn-primary">Pay</button>
+            </fieldset>
+        </div>
+        <div id="popup">
+            <div id="msg"></div>
+            <br>
+            <button onclick="OkClick()" class="btn btn-danger">OK</button>
+        </div>
+    </body>
+</html>
