@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+         #lblPhoto {
+             width: 300px;
+             height: 200px;
+             transform: scale(1.0);
+             -webkit-transition: 2s ease-in;
+         }
+         #lblPhoto:hover {
+             transform: scale(2.0);
+             -webkit-transition: 2s ease-out;
+         }
+         .container {
+             overflow: hidden;
+         }
+         #tip {
+             width:200px;
+             height:30px;
+             top:10px;
+             right:10px;
+             position: fixed;
+             background-color: cadetblue;
+             color:white;
+             display:none;
+         }
+        </style>
+        <script>
+            var products = [
+                {Name: "Samsung TV", Price: 46000.66, Photo: "../Images/tv.jpg", Mfd:new Date("2019/01/20")},
+                {Name: "Mobile", Price: 16000.44, Photo: "../Images/mobile.jpg", Mfd:new Date("2019/03/09")},
+                {Name: "Nike Casuals", Price: 6000.55, Photo: "../Images/shoe.jpg", Mfd:new Date("2019/04/18")},
+                {Name: "Lee Cooper Boot", Price: 3000.45, Photo: "../Images/shoe1.jpg", Mfd:new Date("2019/05/10")},
+            ];
+            function ShowDetails(index) {
+                document.getElementById("lblName").innerHTML = products[index].Name;
+                document.getElementById("lblPhoto").src = products[index].Photo;
+                document.getElementById("lblPrice").innerHTML = "&#8377;" + products[index].Price + "<br>" + products[index].Mfd.toDateString();
+            }
+            function bodyload() {
+                ShowDetails(0);
+            }
+            var i=0;
+            function NextClick() {
+                i++;
+                ShowDetails(i);
+            }
+            function PreviousClick(){
+                i--;
+                ShowDetails(i);
+            }
+            function ShowTip() {
+                document.getElementById("tip").style.display = "block";
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+            <div id="tip">
+                    Added to Cart
+                </div>
+        <div class="container text-center">
+           
+            <h1>Amazon Shopping Cart</h1>
+            <div class="card">
+                <div class="card-header">
+                    <h2 id="lblName" class="card-title"></h2>
+                </div>
+                <div class="card-body container">
+                    <a href="#">
+                    <img src="../Images/previous.jpg" onclick="PreviousClick()">
+                    </a>
+                    <img  id="lblPhoto" class="img-thumbnail" width="200" height="200" border="1">
+                    <a href="#">
+                    <img src="../Images/next.jpg" onclick="NextClick()">
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <h2 id="lblPrice" class="text-center"></h2>
+                    <div>
+                        <button onclick="ShowTip()" class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
