@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+          #imgPreview {
+              width:300px;
+              height:250px;
+          }
+        </style>
+        <script>
+            var categories = ["Select a Category", "Electronics", "Shoes"];
+            var electronics = ["Select Electronic Product", "Samsung TV", "Mobile"];
+            var shoes = ["Select Shoe Product", "Nike Casuals", "Lee Cooper Boot"];
+            var data = [
+                {Name: "Samsung TV", Price: 45000.64, Photo: "../Images/tv.jpg"},
+                {Name: "Mobile", Price: 14000.64, Photo: "../Images/mobile.jpg"},
+                {Name: "Nike Casuals", Price: 4000.64, Photo: "../Images/shoe.jpg"},
+                {Name: "Lee Cooper Boot", Price: 2000.64, Photo: "../Images/shoe1.jpg"},
+            ]
+            function bodyload(){
+                var lstCategories = document.getElementById("lstCategories");
+                for(var i=0; i<categories.length; i++) {
+                    var opt = document.createElement("option");
+                    opt.text = categories[i];
+                    opt.value = categories[i];
+                    lstCategories.appendChild(opt);
+                }
+            }
+
+            function AddProducts(collection) {
+                var lstProducts = document.getElementById("lstProducts");
+                lstProducts.innerHTML="";
+                for(var i=0; i<collection.length; i++) {
+                    var opt = document.createElement("option");
+                    opt.text= collection[i];
+                    opt.value= collection[i];
+                    lstProducts.appendChild(opt);
+                }
+            }
+
+            function CategoryChanged() {
+                var selectedCategory = document.getElementById("lstCategories").value;
+                switch(selectedCategory) {
+                    case "Electronics": 
+                    AddProducts(electronics);
+                    break;
+                    case "Shoes": 
+                    AddProducts(shoes);
+                    break;
+                    default: 
+                     document.getElementById("lstProducts").innerHTML="";
+                    break;
+                }
+            }
+            var price;
+            function ShowDetails(index){
+                price=data[index].Price;
+                document.getElementById("lblName").innerHTML = data[index].Name;
+                document.getElementById("lblPrice").innerHTML = "&#8377;" + price;
+                document.getElementById("imgPreview").src= data[index].Photo;
+            }
+            function ProductChanged() {
+                var lstProducts = document.getElementById("lstProducts").value;
+                switch(lstProducts){
+                    case "Samsung TV":
+                    ShowDetails(0);
+                    break;
+                    case "Mobile": 
+                    ShowDetails(1);
+                    break;
+                    case "Nike Casuals":
+                    ShowDetails(2);
+                    break;
+                    case "Lee Cooper Boot":
+                    ShowDetails(3);
+                    break;
+                }
+            }
+            function QuantityChange() {
+                var txtQty = document.getElementById("txtQty").value;
+                document.getElementById("lblPrice").innerHTML = "&#8377;" + (txtQty * price);
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <div class="container">
+            <h2>Amazon Shopping</h2>
+            <div class="form-group">
+                <label>Select a Category</label>
+                <div>
+                    <select onchange="CategoryChanged()" id="lstCategories" class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Select a Product</label>
+                <div>
+                    <select onchange="ProductChanged()" id="lstProducts" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Product Preview</label>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 id="lblName"></h3>
+                    </div>
+                    <div class="card-body">
+                     <img id="imgPreview" class="img-thumbnail">
+                     <input id="txtQty" onchange="QuantityChange()" type="number" value="1" min="1" max="5"> Quantity
+                    </div>
+                    <div class="card-footer">
+                        <h3 id="lblPrice"></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
