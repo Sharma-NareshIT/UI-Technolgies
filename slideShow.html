@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <style>
+            #gallery img {
+                transform: scale(1.0);
+                transition: 0s;
+                opacity: 0.3 ;
+                z-index: 0;
+            }
+            #gallery img:hover {
+                transform: scale(2.0);
+                opacity: 1.0;
+                transition: 2s;
+                z-index: 2.0;
+            }
+        </style>
+        <script>
+            var cars = [
+                {CarName: "Audi", Photo:"../Cars/1.jpg"},
+                {CarName: "Audi-Q7", Photo:"../Cars/2.jpg"},
+                {CarName: "Range Rower", Photo:"../Cars/3.jpg"},
+                {CarName: "Ferrari", Photo:"../Cars/9.jpg"},
+                {CarName: "Audi-1", Photo:"../Cars/4.jpg"},
+            ]
+            function GetCar(index) {
+                document.getElementById("lblName").innerHTML = 
+                cars[index].CarName;
+
+                document.getElementById("pic").src= 
+                cars[index].Photo;
+            }
+            function bodyload() {
+                GetCar(0);
+                var scroller = document.getElementById("scroller");
+
+                for(var i=0; i<cars.length; i++) {
+                    var pic = new Image();
+                    pic.height = "90";
+                    pic.width ="100";
+                    pic.src = cars[i].Photo;
+                    scroller.appendChild(pic);
+                }
+            }
+            var i=0;
+            function SlideShow() {
+                i++;
+                GetCar(i);
+            }
+            function PlayClick(){
+                document.getElementById("status").innerHTML = "(Playing)";
+                window.cancel = setInterval(SlideShow, 5000);
+            }
+            function PauseClick() {
+                document.getElementById("status").innerHTML = "(Paused)";
+                clearInterval(cancel);
+            }
+            function NextClick() {
+                i++;
+                GetCar(i);
+            }
+            function PrevClick() {
+                i--;
+                GetCar(i);
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <div class="container">
+            <div class="card">
+                <div class="card-header" align="center">
+                    <h2 id="lblName"></h2>
+                    <div id="status"></div>
+                </div>
+                <div class="card-body text-center" align="center" >
+                    <div>
+                            <a href="javascript:PrevClick()">
+                                    <img width="40" height="40" src="../Images/previous.jpg">
+                                </a>
+                                <img id="pic" width="600" height="300">
+                                <a href="javascript:NextClick()">
+                                        <img width="40" height="40" src="../Images/next.jpg">
+                                </a>
+                    </div>
+                    <br>
+                    <marquee id="gallery" scrollamount="10" onmouseout="this.start()" onmouseover="this.stop()">
+                    <div align="center" id="scroller">
+
+                    </div>
+                    </marquee>
+                </div>
+                <div class="card-footer" align="center">
+                    <button onclick="PlayClick()" class="btn btn-outline-success">
+                        <font face="webdings">4</font>
+                    </button>
+                    <button onclick="PauseClick()" class="btn btn-outline-success">
+                        <font face="webdings">;</font>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
