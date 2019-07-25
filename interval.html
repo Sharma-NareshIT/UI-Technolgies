@@ -1,0 +1,25 @@
+<head>
+    <script>
+        function GetTime() {
+            var now = new Date();
+            document.getElementById("msg").innerHTML = 
+            now.toLocaleTimeString();
+        }
+        function bodyload() {
+           window.timer = setInterval(GetTime,1000);
+        }
+        function StopClick(){
+            clearInterval(timer);
+        }
+        function StartClick() {
+            setInterval(GetTime,1000);
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <div id="msg" align="center"></div>
+    <div align="center">
+        <button onclick="StopClick()">Stop</button>
+        <button onclick="StartClick()">Start</button>
+    </div>
+</body>
