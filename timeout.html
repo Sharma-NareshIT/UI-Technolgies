@@ -1,0 +1,25 @@
+<script>
+    function msg1(){
+      var msg = document.getElementById("msg").innerHTML="Msg-1 : Hello !";
+    }
+    function msg2() {
+      var msg = document.getElementById("msg").innerHTML="Msg-2 : Welcome to JS";
+    }
+    function msg3() {
+      var msg = document.getElementById("msg").innerHTML="Msg-3 : How are you doing today?";
+    }
+    function bodyload() {
+      setTimeout(msg1,2000);
+      window.m2 = setTimeout(msg2,5000);
+      setTimeout(msg3, 6000);
+    }
+    function Cancel(){
+      clearTimeout(m2);
+    }
+</script>
+<body onload="bodyload()">
+  <h2 align="center" id="msg"></h2>
+  <div align="center">
+    <button onclick="Cancel()">Cancel Msg2</button>
+  </div>
+</body>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+            var data = [
+                {UserName: "john"},
+                {UserName: "john12"},
+                {UserName: "john_ui"},
+                {UserName: "david"}
+            ];
+            function VerifyUser(){
+                var txtName = document.getElementById("txtName").value;
+                var msg = document.getElementById("msg");
+
+                for(var i =0; i<data.length; i++) {
+                    if(data[i].UserName==txtName) {
+                        msg.style.color="red";
+                        msg.innerHTML="User Name Taken - Try Another";
+                        return;
+                    } else {
+                        msg.style.color="green";
+                        msg.innerHTML="User Name Available";
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Register User</h2>
+            <div class="form-group">
+                <label>User Name</label>
+                <div>
+                    <input onkeyup="VerifyUser()" type="text" class="form-control" id="txtName">
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
