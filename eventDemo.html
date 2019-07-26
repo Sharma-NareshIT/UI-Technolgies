@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+         function PickColor(e){
+            var msg= document.getElementById("msg");
+            if(e.clientX>=14 && e.clientX<=272) {
+                msg.style.color="red";
+            } else if (e.clientX>=279 && e.clientX<=567)
+            {
+                msg.style.color="green";
+            } else if (e.clientX>=576 && e.clientX<=809) {
+                msg.style.color="blue";
+            }
+         }
+        </script>
+    </head>
+    <body>
+        <div>
+            <img onclick="PickColor(event)" src="../Images/panel.png">
+        </div>
+        <div>
+            <h1 id="msg">Sample Text</h1>
+        </div>
+    </body>
+</html>

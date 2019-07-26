@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function MovePic(){
+                px = px + 10;
+                document.getElementById("pic").style.marginLeft = px + "px";
+            }
+            var px=10;
+            function RightClick(){
+                px= px+10;
+                MovePic(px);
+            }
+            function LeftClick() {
+                px = px-10;
+                MovePic(px);
+            }
+            function StartClick() {
+                window.promise=setInterval(MovePic,1000);
+            }
+            function PauseClick() {
+                clearInterval(promise);
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <img id="pic" src="../Cars/3.jpg" width="100" height="100">
+        </div>
+        <br>
+        <div>
+            <button onclick="RightClick()">Move Right</button>
+            <button onclick="LeftClick()">Move Left</button>
+            <button onclick="StartClick()">Start</button>
+            <button onclick="PauseClick()">Pause</button>
+        </div>
+    </body>
+</html>

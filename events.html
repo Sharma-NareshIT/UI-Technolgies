@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function Actions(obj, event) {
+                document.write("Button Value :" + obj.value + "<br>" + "Button Name :" + obj.name + "<br>");
+                switch(obj.value) {
+                    case "Insert":
+                    document.write("Record Inserted <br>");
+                    break;
+                    case "Delete":
+                    document.write("Record Deleted <br>");
+                    break;
+                }
+                for(var property in event)
+                {
+                    document.write(property + "<br>");
+                }
+            }
+        </script>
+    </head>
+    <body>
+       <button onclick="Actions(this, event)" name="btnInsert" value="Insert">Insert</button>
+       <button onclick="Actions(this, event)" name="btnDelete" value="Delete">Delete</button>
+    </body>
+</html>
