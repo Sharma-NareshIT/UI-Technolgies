@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function Move(e){
+                var flag = document.getElementById("flag");
+                flag.style.position = "fixed";
+                flag.style.left = e.clientX + "px";
+                flag.style.top = e.clientY + "px";
+            }
+        </script>
+    </head>
+    <body onmousemove="Move(event)">
+        <div style="height: 1000px">
+        </div>
+        <img id="flag" src="../Images/flag.gif">
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function OpenPic(e) {
+                if(e.ctrlKey==true) {
+                    window.open("../Cars/3.jpg","CarPic","height=300 width=400");
+                } else {
+                    alert("Use Ctrl Key to Open in New Window");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <img onclick="OpenPic(event)" src="../Cars/3.jpg" width="100" height="100">
+    </body>
+</html>

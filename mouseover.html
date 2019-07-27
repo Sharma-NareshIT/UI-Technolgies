@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        #gallery img {
+            width:150px;
+            height:150px;
+            opacity: 0.5;
+            transition: 2s;
+            z-index: 0;
+        }
+        #gallery img:hover {
+            transform: scale(1.5);
+            opacity: 1.0;
+            transition: 2s;
+            z-index: 2;
+        }
+        </style>
+        <script>
+          var cars=["../Cars/1.jpg","../Cars/2.jpg","../Cars/3.jpg","../Cars/4.jpg"];
+         function bodyload(){
+            for(var i=0; i<cars.length; i++) {
+                var img = new Image();
+                img.width="150";
+                img.height="150";
+                img.src=cars[i];
+                document.getElementById("container").appendChild(img);
+            }
+         }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <marquee onmouseover="this.stop()" onmouseout="this.start()" id="gallery" scrollamount="10">
+        <div id="container">
+        </div>
+        </marquee>
+    </body>
+</html>
