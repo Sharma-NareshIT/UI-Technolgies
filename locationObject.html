@@ -1,0 +1,38 @@
+<head>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function GetDetails() {
+            document.getElementById("server").innerHTML= location.host;
+            var loc;
+            if(location.protocol=="http:") {
+                loc = "You are using Web Server";
+            } else if(location.protocol=="file:") {
+                loc = "You are using File Server";
+            }
+            document.getElementById("protocol").innerHTML= location.protocol + "<br>" + loc;
+            document.getElementById("url").innerHTML= location.href;
+            document.getElementById("path").innerHTML= location.pathname;       
+        }
+    </script>
+    <body>
+        <div class="container">
+            <h2>Location Object</h2>
+            <div class="form-group">
+                <button onclick="GetDetails()" class="btn btn-primary">Get Client Location</button>
+                <button onclick="location.reload()" class="btn btn-success">Refresh</button>
+            </div>
+            <div class="form-group">
+                <dl>
+                    <dt>Server / IP</dt>
+                    <dd id="server"></dd>
+                    <dt>Protocol</dt>
+                    <dd id="protocol"></dd>
+                    <dt>URL</dt>
+                    <dd id="url"></dd>
+                    <dt>Path</dt>
+                    <dd id="path"></dd>
+                </dl>
+            </div>
+        </div>
+    </body>
+</head>

@@ -1,0 +1,12 @@
+<script>
+   if(navigator.plugins["Chrome PDF Viewer"]==undefined) {
+       document.write("You can't watch PDF Documents");
+   } else {
+       document.write("You can watch PDF" + "<br>" + "Total No of Pages in History : " + history.length);
+     
+   }
+</script>
+<noscript>JavaScript not enabled </noscript>
+<body>
+    <button onclick="history.back()">Back</button>
+</body>

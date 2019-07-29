@@ -1,0 +1,38 @@
+<head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script>
+            function GetDetails() {
+               document.getElementById("family").innerHTML = navigator.appName;
+               document.getElementById("agent").innerHTML = navigator.userAgent;
+               document.getElementById("lang").innerHTML = navigator.language;
+               if(navigator.cookieEnabled==true) {
+                document.getElementById("cookie").innerHTML ="You can use Gmail";
+               } else {
+                document.getElementById("cookie").innerHTML = "Cookies Disabled - Gmail Requires Cookies";
+               }
+               
+               
+            }
+        </script>
+        <body>
+            <div class="container">
+                <h2>Naivgator Object</h2>
+                <div class="form-group">
+                    <button onclick="GetDetails()" class="btn btn-primary">Get Client Browser Details</button>
+                    <button onclick="location.reload()" class="btn btn-success">Refresh</button>
+                </div>
+                <div class="form-group">
+                    <dl>
+                        <dt>Browser Family</dt>
+                        <dd id="family"></dd>
+                        <dt>Supported On</dt>
+                        <dd id="agent"></dd>
+                        <dt>Language</dt>
+                        <dd id="lang"></dd>
+                        <dt>Cookies Enabled</dt>
+                        <dd id="cookie"></dd>
+                    </dl>
+                </div>
+            </div>
+        </body>
+    </head>
