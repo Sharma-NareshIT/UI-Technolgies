@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="Stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../node_modules/angular/angular.js"></script>
+    </head>
+    <body ng-app>
+        <div class="container">
+            <h2>Products Catalog</h2>
+            <div>
+                Search Product:
+                <input class="form-control" type="text" ng-model="search">
+            </div>
+            <br> <br>
+          <div ng-init="products=[{Name:'Samsung TV', Price:45000.55, Photo:'../Images/tv.jpg'},{Name:'Nike Shoe',Price:4500.54, Photo:'../Images/shoe.jpg'}]">
+            <div class="card-deck">
+                <div class="card" ng-repeat="item in products | filter:search">
+                    <div class="card-header">
+                        <h3>{{item.Name}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="{{item.Photo}}" width="100" height="100">
+                    </div>
+                    <div class="card-footer">
+                        <h3>{{item.Price}}</h3>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>
