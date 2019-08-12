@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+         $(document).ready(function(){
+            $("button").click(function(){
+                alert("Welcome to JQuery");
+            });
+            $("#pic").dblclick(function(){
+                alert("You Double Clicked");
+            })
+         })
+        </script>
+    </head>
+    <body>
+        <button>Click Me</button>
+        <br> <br>
+        <img  id="pic" src="../Images/tv.jpg" width="200" height="200">
+    </body>
+</html>

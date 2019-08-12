@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+         $(document).ready(function(){
+            $("button").click(function(){
+                $("#msg").slideToggle();
+            })
+         })
+        </script>
+    </head>
+    <body>
+        <button>Show \ Hide </button>
+        <div id="msg" style="border-style: dotted; background-color: antiquewhite; width:400px; height: 200px; display: none">
+            Welcome to JQuery. <br>
+            This is JQuery Effects Demo.
+        </div>
+    </body>
+</html>

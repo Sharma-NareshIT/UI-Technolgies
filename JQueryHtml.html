@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+         $(document).ready(function(){
+             $("button").click(function(){
+                 var uname = $("#txtName").val();
+                 $("#msg").css({"background-color":"green","color":"white"});
+                 $("#msg").text("Hello ! " + uname);
+             })
+         })
+        </script>
+    </head>
+    <body>
+        Name :
+        <input type="text" id="txtName">
+        <button>Submit</button>
+        <br>
+        <h2 id="msg"></h2>
+    </body>
+</html>
