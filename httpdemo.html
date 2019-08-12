@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="Scripts/angular.js"></script>
+        <script>
+         var app= angular.module("DemoApp",[]);
+         app.controller("HomeController", function($scope, $http, $interval){
+              function GetTime() {
+                 var now = new Date();
+                 $scope.clock = now.toLocaleTimeString();
+              }
+              $interval(GetTime,1000);
+              $scope.products=[];
+              $http.get("products.json")
+              .then(function onsuccess(response){
+                  $scope.status = response.status;
+                  $scope.statustext = response.statusText;
+                  $scope.products = response.data;
+              }, 
+              function onfailure(response){
+                 $scope.status = response.status;
+                 $scope.statustext = response.statusText;
+                 $scope.products = [];
+              })
+         })
+        </script>
+    </head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <h2>{{clock}}</h2>
+        <dl>
+            <dt>Status Code</dt>
+            <dd>{{status}}</dd>
+            <dt>Status Text</dt>
+            <dd>{{statustext}}</dd>
+            <dt>Data</dt>
+            <dd>{{products | json}}</dd>
+        </dl>
+    </body>
+</html>

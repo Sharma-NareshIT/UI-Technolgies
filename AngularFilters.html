@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../Scripts/angular.js"></script>
+        <script>
+          var app = angular.module("DemoApp",[]);
+          app.controller("HomeController", function($scope){
+                $scope.products=[
+                    {Name:"Samsung TV", Price:45000.50, Mfd:new Date("2019/02/22")},
+                    {Name:"Nike Shoe", Price:3000.40, Mfd:new Date("2019/01/10")},
+                    {Name:"Mobile", Price:15000.45, Mfd:new Date("2019/03/18")},
+                    {Name:"Lee Cooper Shoe", Price:5000.55, Mfd:new Date("2019/05/16")},
+                    
+                ]
+          })
+        </script>
+    </head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <div>
+            <input type="number" min="1" max="{{products.length}}" value="1" ng-model="records"> No of Records
+        </div>
+        <fieldset>
+            <legend>Sort Products</legend>
+            <select ng-model="sort">
+                <option value="Name">Name</option>
+                <option value="Price">Price</option>
+                <option value="Mfd">Manufactured</option>
+            </select>
+            <input type="checkbox" ng-model="reverse"> Reverse
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Search Product</legend>
+            <input type="text" ng-model="search">
+        </fieldset>
+        <br>
+         <table width="600" border="1">
+             <th>Name</th>
+             <th>Price</th>
+             <th>Mfd</th>
+             <tr ng-repeat="item in products |limitTo:records |orderBy:sort:reverse |filter:search">
+                <td>{{item.Name |uppercase}}</td>
+                <td>{{item.Price|currency:'&#8377;'}}</td>
+                <td>{{item.Mfd | date:'d MMMM, yyyy'}}</td>
+             </tr>
+         </table>
+    </body>
+</html>
