@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="Scripts/angular.js"></script>
+    </head>
+    <body ng-app>
+        <form name="frmHome">
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text" name="txtName" ng-model="txtName" required></dd>
+                <dt>Mobile</dt>
+                <dd><input type="text" name="txtMobile" ng-model="txtMobile" pattern="\+91[0-9]{10}"></dd>
+            </dl>
+            <br>
+            <button ng-disabled="frmHome.$invalid">Submit</button>
+        </form>
+        <h2>Validation Services</h2>
+        <dl>
+            <dt>Pristine - No fields modified</dt>
+            <dd>{{frmHome.$pristine}}</dd>
+            <dt>Dirty - One or More Fields Modified</dt>
+            <dd>{{frmHome.$dirty}}</dd>
+            <dt>Invalid - One or More field Invalid</dt>
+            <dd>{{frmHome.$invalid}}</dd>
+            <dt>Valid - All fields Valid</dt>
+            <dd>{{frmHome.$valid}}</dd>
+            <dt>Form Submitted</dt>
+            <dd>{{frmHome.$submitted}}</dd>
+        </dl>
+    </body>
+</html>
