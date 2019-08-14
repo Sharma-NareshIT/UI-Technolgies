@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../node_modules/angular/angular.js"></script>
+        <script>
+          var app= angular.module("DemoApp",[]);
+          app.controller("HomeController", function($scope){
+             $scope.products = [
+                 {
+                     Name:"Samsung TV",
+                     Price: 45000.55,
+                     Photo: "../Images/tv.jpg"
+                 },
+                 {
+                     Name:"Nike Shoe",
+                     Price:5600.64,
+                     Photo:"../Images/shoe.jpg"
+                 },
+                 {
+                     Name:"Lee Cooper Shoe",
+                     Price:4200.44,
+                     Photo:"../Images/shoe1.jpg"
+                 }
+             ];
+          })
+        </script>
+    </head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <div class="container">
+            <h2>Products Table</h2>
+            <table class="table table-hover">
+                <thead>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Preview</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in products">
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Price}}</td>
+                        <td>
+                            <img src="{{item.Photo}}" width="50" height="50">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="form-group">
+                <fieldset>
+                    <legend>Search Products</legend>
+                    <input ng-model="search" type="text" class="form-control">
+                </fieldset>
+            </div>
+            <h2>Products List</h2>
+            <div class="card-deck">
+                <div class="card" ng-repeat="item in products|filter:search">
+                    <div class="card-header">
+                        <h2>{{item.Name}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <img src="{{item.Photo}}" width="100" height="100">
+                    </div>
+                    <div class="card-footer">
+                        <h2>{{item.Price}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
