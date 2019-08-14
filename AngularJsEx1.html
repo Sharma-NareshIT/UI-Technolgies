@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../node_modules/angular/angular.js"></script>
+    </head>
+    <body ng-app>
+        <fieldset>
+            <legend>Register Product</legend>
+            <dl>
+                <dt>Name</dt>
+                <dd><input type="text" ng-model="Name"></dd>
+                <dt>Manufactured</dt>
+                <dd><input type="date" ng-model="Mfd"></dd>
+                <dt>Is In Stock</dt>
+                <dd><input type="checkbox" ng-model="Stock">Yes</dd>
+                <dt>Shipped To</dt>
+                <dd>
+                    <select ng-model="City">
+                        <option>Delhi</option>
+                        <option>Hyd</option>
+                    </select>
+                </dd>
+            </dl>
+        </fieldset>
+        <br> <br>
+        <fieldset>
+            <legend>Details</legend>
+            <table width="400" border="1">
+                <tr>
+                    <td>Name</td>
+                    <td ng-bind="Name"></td>
+                </tr>
+                <tr>
+                    <td>Manufactured</td>
+                    <td>{{Mfd.toLocaleDateString()}}</td>
+                </tr>
+                <tr>
+                    <td>Is in Stock</td>
+                    <td>{{(Stock==true)?"Available":"Out of Stock"}}</td>
+                </tr>
+                <tr>
+                    <td>Shipped To</td>
+                    <td ng-bind="City"></td>
+                </tr>
+            </table>
+        </fieldset>
+    </body>
+</html>
