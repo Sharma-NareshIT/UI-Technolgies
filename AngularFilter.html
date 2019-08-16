@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../scripts/angular.js"></script>
+        <script>
+          var app = angular.module("DemoApp",[]);
+          app.controller("HomeController", function($scope){
+             $scope.products =[
+                 {
+                     Id:1,
+                     Name:"Samsung TV",
+                     Price:45000.54,
+                     Mfd:new Date("2019/03/22"),
+                     Photo:"../Images/tv.jpg"
+                 },
+                 {
+                     Id:2,
+                     Name:"Nike Shoe",
+                     Price:5000.54,
+                     Mfd:new Date("2019/02/10"),
+                     Photo:"../Images/shoe.jpg"
+                 },
+                 {
+                     Id:3,
+                     Name:"Mobile",
+                     Price:15000.54,
+                     Mfd:new Date("2019/05/12"),
+                     Photo:"../Images/mobile.jpg"
+                 },
+                 {
+                     Id:4,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11"),
+                     Photo:"../Images/shoe1.jpg"
+                 },
+             ];
+          })
+        </script>
+    </head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <div class="container">
+           <table cellspacing="15" cellpadding="15">
+               <tr>
+                   <td>
+                       <h2>Filter Products</h2>
+                       <dl>
+                           <dt>Name</dt>
+                           <dd><input type="text" ng-model="search.Name"></dd>
+                           <dt>Price</dt>
+                           <dd><input type="text" ng-model="search.Price"></dd>
+                           <dt>Select Product</dt>
+                           <dd>
+                            <select ng-model="search.Name">
+                                <option>Shoe</option>
+                                <option>TV</option>
+                            </select>
+                           </dd>
+                       </dl>
+                   </td>
+                   <td>
+                       <div class="card-deck">
+                       <div class="card" ng-repeat="item in products|filter:search">
+                         <div class="card-header">
+                            {{item.Name}}
+                         </div>
+                         <div class="card-body">
+                            <img src="{{item.Photo}}" class="img-thumbnail" width="100" height="100">
+                         </div>
+                         <div class="card-footer">
+                            <h4>{{item.Price | currency}}
+                                <br>
+                                {{item.Mfd | date}}
+                            </h4>
+                         </div>
+                       </div>
+                    </div>
+                   </td>
+               </tr>
+           </table>
+        </div>
+    </body>
+</html>
