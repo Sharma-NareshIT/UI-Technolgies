@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../scripts/angular.js"></script>
+        <script>
+          var app = angular.module("DemoApp",[]);
+          app.controller("HomeController", function($scope){
+             $scope.products =[
+                 {
+                     Id:1,
+                     Name:"Samsung TV",
+                     Price:45000.54,
+                     Mfd:new Date("2019/03/22")
+                 },
+                 {
+                     Id:2,
+                     Name:"Nike Shoe",
+                     Price:5000.54,
+                     Mfd:new Date("2019/02/10")
+                 },
+                 {
+                     Id:3,
+                     Name:"Mobile",
+                     Price:15000.54,
+                     Mfd:new Date("2019/05/12")
+                 },
+                 {
+                     Id:4,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:5,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:6,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:7,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:8,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:9,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:10,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:11,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+                 {
+                     Id:12,
+                     Name:"Lee Cooper Shoe",
+                     Price:4000.54,
+                     Mfd:new Date("2019/02/11")
+                 },
+             ];
+             $scope.fieldName= "Id";
+             $scope.reverse=false;
+             $scope.Sort = function(fieldName){
+                $scope.fieldName = fieldName;
+                $scope.reverse = ($scope.fieldName===fieldName)?!$scope.reverse:$scope.reverse==false;
+             }
+             $scope.recordsPerPage=4;
+             $scope.startWith=0;
+             $scope.Next = function(){
+                 $scope.startWith+=$scope.recordsPerPage;
+                
+             }
+             $scope.Previous = function(){
+                 $scope.startWith-=$scope.recordsPerPage;
+             }
+          })
+        </script>
+    </head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <div class="container">
+            <h2>Products List</h2>
+            
+            <table class="table table-hover">
+                <thead>
+                    <th><a ng-click="Sort('Id')" class="btn btn-block btn-primary" href="">Product Id</a></th>
+                    <th><a ng-click="Sort('Name')" class="btn btn-block btn-primary" href="">Name</a></th>
+                    <th><a ng-click="Sort('Price')" class="btn btn-block btn-primary" href="">Price</a></th>
+                    <th><a ng-click="Sort('Mfd')" class="btn btn-block btn-primary" href="">Manufactured</a></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in products|orderBy:fieldName:reverse|limitTo:recordsPerPage:startWith">
+                        <td>{{item.Id}}</td>
+                        <td>{{item.Name |uppercase}}</td>
+                        <td>{{item.Price|currency:'&#8377;'}}</td>
+                        <td>{{item.Mfd |date:'dd MMMM , yyyy'}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" align="center">
+                            <button ng-click="Previous()" class="btn btn-outline-success"> < </button>
+                            <button  ng-click="Next()" class="btn btn-outline-success"> > </button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+</html>
