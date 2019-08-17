@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../node_modules/angular/angular.js"></script>
+        <style>
+         input.ng-invalid {
+             border: 2px solid red;
+         }
+         input.ng-valid {
+             border: 2px solid green;
+         }
+        </style>
+    </head>
+    <body ng-app>
+        <form name="frmHome">
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text" name="txtName" ng-model="txtName" required ng-minlength="4" ng-maxlength="10">
+                    <span ng-if="frmHome.txtName.$touched && frmHome.txtName.$error.required">Name Required</span>
+                    <span ng-if="frmHome.txtName.$error.minlength">Name too short..</span>
+                    <span ng-if="frmHome.txtName.$error.maxlength">Name too long..</span>
+                </dd>
+                <dt>Mobile</dt>
+                <dd><input type="text" name="txtMobile" ng-model="txtMobile" pattern="\+91[0-9]{10}" required>
+                    <span ng-if="frmHome.txtMobile.$touched && frmHome.txtMobile.$error.required">Mobile Required</span>
+                    <span ng-if="frmHome.txtMobile.$error.pattern">Invalid Mobile</span>
+                </dd>
+            </dl>
+            <button ng-disabled="frmHome.$invalid">Submit</button>
+            <button ng-disabled="frmHome.$pristine">Save</button>
+        </form>
+        <br>
+        <h2>Form State Validation</h2>
+        <dl>
+            <dt>Pristine - No fields Modified</dt>
+            <dd>{{frmHome.$pristine}}</dd>
+            <dt>Dirty - One or More fields modified</dt>
+            <dd>{{frmHome.$dirty}}</dd>
+            <dt>Valid - All Fields Valid</dt>
+            <dd>{{frmHome.$valid}}</dd>
+            <dt>Invalid - Any one field invalid</dt>
+            <dd>{{frmHome.$invalid}}</dd>
+            <dt>Submitted</dt>
+            <dd>{{frmHome.$submitted}}</dd>
+        </dl>
+    </body>
+</html>
