@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../node_modules/angular/angular.js"></script>
+        <script>
+         var app=angular.module("DemoApp",[]);
+         app.controller("HomeController", function($scope, $http){
+            $scope.GetDetails =function(){
+                $http.get("products.json")
+                  .then(function(response){
+                     $scope.status = response.status;
+                     $scope.statusText=response.statusText;
+                     $scope.data = response.data;
+                  }, 
+                  function(response){
+                    $scope.status = response.status;
+                     $scope.statusText=response.statusText;
+                     $scope.data = response.data;
+                  })
+            }
+        
+         })
+        </script>
+    </head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <button ng-click="GetDetails()">Get Details</button>
+        <h2>Response Details</h2>
+        <dl>
+            <dt>Status Code</dt>
+            <dd>{{status}}</dd>
+            <dt>Status Text</dt>
+            <dd>{{statusText}}</dd>
+            <dt>Data</dt>
+            <dd>{{data}}</dd>
+            <dt>Table</dt>
+            <dd>
+                <table border="1" width="400">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <tr ng-repeat="item in data">
+                        <td>{{item.Id}}</td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Price}}</td>
+                    </tr>
+                </table>
+            </dd>
+        </dl>
+    </body>
+</html> 
