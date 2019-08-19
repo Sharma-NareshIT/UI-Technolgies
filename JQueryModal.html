@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container">
+    <h2>Modal Demo</h2>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#billSummary">Show Bill</button>
+    <div class="modal fade" id="billSummary">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Bill Summary</h2>
+            </div>
+            <div class="modal-body">
+                Your Bill Details..
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
