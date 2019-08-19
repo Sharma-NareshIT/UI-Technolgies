@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="../node_modules/angular/angular-route.js"></script>
+        <script>
+            var app=angular.module("DemoApp",['ngRoute']);
+            app.config(function($routeProvider){
+                $routeProvider
+                .when("/",{
+                    templateUrl:"home.html"
+                })
+                .when("/home",{
+                    templateUrl:"home.html"
+                })
+                .when("/about",{
+                    templateUrl:"about.html"
+                })
+                .when("/contact",{
+                    templateUrl:"contact.html"
+                })
+                .otherwise({
+                    template:"<h2>Page Not Found</h2>"
+                })
+            })
+            app.controller("HomeController", function($scope){
+
+            })
+        </script>
+    </head>
+    <body ng-app="DemoApp" ng-controller="HomeController">
+        <div class="container">
+            <table width="800" border="1" cellspacing="4" cellpadding="4" align="center">
+                <tr class="bg-primary" align="center">
+                    <td colspan="2">NareshIT | Hyderabad</td>
+                </tr>
+                <tr height="250">
+                   <td width="200">
+                       <ul>
+                           <li><a href="#!home">Home</a></li>
+                           <li><a href="#!about">About</a></li>
+                           <li><a href="#!contact">Contact</a></li>
+                       </ul>
+                   </td> 
+                   <td width="600">
+                       <ng-view></ng-view>
+                   </td>
+                </tr>
+                <tr class="bg-success" align="center">
+                    <td colspan="2">
+                        &copy; copyright 2019 <br>
+                        Faculty | Courses | Projects
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
